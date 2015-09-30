@@ -8,6 +8,8 @@ typedef char byte;
 #define PAGE_SIZE 4096
 #include <string>
 #include <climits>
+#include <sys/stat.h>
+
 using namespace std;
 
 class FileHandle;
@@ -21,6 +23,11 @@ public:
     RC destroyFile   (const string &fileName);                         	// Destroy a file
     RC openFile      (const string &fileName, FileHandle &fileHandle); 	// Open a file
     RC closeFile     (FileHandle &fileHandle);                         	// Close a file
+
+    inline bool exists (const std::string& fileName) {
+      struct stat stFileInfo;
+      return (stat (fileName.c_str(), &stFileInfo) == 0);
+    }
 
 protected:
     PagedFileManager();                                   				// Constructor
@@ -47,6 +54,13 @@ public:
     RC appendPage(const void *data);                                    // Append a specific page
     unsigned getNumberOfPages();                                        // Get the number of pages in the file
     RC collectCounterValues(unsigned &readPageCount, unsigned &writePageCount, unsigned &appendPageCount);  // Put the current counter values into variables
+
+    inline RC setFileName(const string& fileName){
+    	fileName = *fileName;
+    	return 0;
+    }
+private:
+    string fileName;
 }; 
 
 #endif
