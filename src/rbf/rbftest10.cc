@@ -90,21 +90,29 @@ int RBFTest_10(RecordBasedFileManager *rbfm) {
 
     for(int i = 0; i < numRecords; i++)
     {
-        memset(record, 0, 1000);
+//        cout << i << endl;
+    	memset(record, 0, 1000);
         memset(returnedData, 0, 1000);
         rc = rbfm->readRecord(fileHandle, recordDescriptor, rids[i], returnedData);
         assert(rc == success && "Reading a record should not fail.");
-
         if (i % 1000 == 0) {
             cout << endl << "Returned Data:" << endl;
             rbfm->printRecord(recordDescriptor, returnedData);
         }
-
         int size = 0;
         prepareLargeRecord(recordDescriptor.size(), nullsIndicator, i, record, &size);
+        if(i==267){
+//            	cout << sizes[i] << endl;
+//            	cout << *((int*)record+8) << endl;
+//            	cout << *((int*)returnedData+8) << endl;
+			cout << rids[i].pageNum << rids[i].slotNum << endl;
+			rbfm->printRecord(recordDescriptor, record);
+			rbfm->printRecord(recordDescriptor, returnedData);
+		}
         if(memcmp(returnedData, record, sizes[i]) != 0)
         {
             cout << "[FAIL] Test Case 10 Failed!" << endl << endl;
+
             free(record);
             free(returnedData);
             return -1;
@@ -128,8 +136,8 @@ int RBFTest_10(RecordBasedFileManager *rbfm) {
 
 	cout << "RBF Test Case 10 Finished! The result will be examined." << endl << endl;
 
-	remove("test9sizes");
-	remove("test9rids");
+//	remove("test9sizes");
+//	remove("test9rids");
 
 	return 0;
 }

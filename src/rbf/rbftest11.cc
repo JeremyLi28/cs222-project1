@@ -57,6 +57,7 @@ int RBFTest_11(RecordBasedFileManager *rbfm) {
 	vector<RID> rids;
 	// Insert 10000 records into file
 	for (int i = 0; i < numRecords; i++) {
+//		cout << i << endl;
 		// Test insert Record
 		memset(record, 0, 1000);
 		int size = 0;

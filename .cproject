@@ -742,13 +742,22 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="cs222.cdt.managedbuild.target.gnu.cross.exe.1958512299" name="Executable" projectType="cdt.managedbuild.target.gnu.cross.exe"/>
 	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/cs222"/>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.1000526423;cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.1000526423.;cdt.managedbuild.tool.gnu.cross.c.compiler.230772609;cdt.managedbuild.tool.gnu.c.compiler.input.1617488816">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.release.2070382539;cdt.managedbuild.config.gnu.cross.exe.release.2070382539.;cdt.managedbuild.tool.gnu.cross.c.compiler.1899842183;cdt.managedbuild.tool.gnu.c.compiler.input.1374164704">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.debug.1298756703;cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.;cdt.managedbuild.tool.gnu.cross.c.compiler.452835366;cdt.managedbuild.tool.gnu.c.compiler.input.644853388">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.1000526423;cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.1000526423.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.830671830;cdt.managedbuild.tool.gnu.cpp.compiler.input.126237260">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.release.2070382539;cdt.managedbuild.config.gnu.cross.exe.release.2070382539.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.20581611;cdt.managedbuild.tool.gnu.cpp.compiler.input.1527641861">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
@@ -756,8 +765,5 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.exe.debug.1298756703;cdt.managedbuild.config.gnu.cross.exe.debug.1298756703.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.578104187;cdt.managedbuild.tool.gnu.cpp.compiler.input.1528717683">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
-	</storageModule>
-	<storageModule moduleId="refreshScope" versionNumber="1">
-		<resource resourceType="PROJECT" workspacePath="/cs222"/>
 	</storageModule>
 </cproject>

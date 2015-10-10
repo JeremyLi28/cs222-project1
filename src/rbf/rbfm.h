@@ -9,6 +9,8 @@
 
 using namespace std;
 
+class PagedFileManager;
+
 // Record ID
 typedef struct
 {
@@ -26,6 +28,89 @@ struct Attribute {
     string   name;     // attribute name
     AttrType type;     // attribute type
     AttrLength length; // attribute length
+};
+
+class Field{
+public:
+	Field(){}
+	~Field(){}
+	Attribute attr;
+	union{
+		int int_value;
+		float real_value;
+		char * varchar_value;
+	};
+};
+
+class IntField:public Field{
+public:
+	IntField():Field(){}
+	~IntField(){}
+};
+
+class RealField:public Field{
+public:
+	RealField():Field(){}
+	~RealField(){}
+};
+
+class VarCharField:public Field{
+public:
+	VarCharField():Field(){}
+	~VarCharField(){}
+};
+
+struct Slot{
+	int record_offset;
+	int record_lenght;
+};
+
+class Record{
+public:
+	Record();
+	Record(const vector<Attribute> &recordDescriptor, const void *data);
+	Record(const vector<Attribute> &recordDescriptor, char* page_buffer,Slot slot);
+	~Record();
+	vector<Attribute> record_Descriptor;
+	vector<Field> fields;
+	int null_bit;
+	unsigned char* null_indicator;
+	int field_size;
+	int total_size;
+//	Record* decodeRecord(const vector<Attribute> &recordDescriptor, const void *data);
+	RC encodeRecord();
+	RC decodeRecord(void* return_data);
+	RID rid;
+	char* buffer;
+
+};
+
+class Page{
+public:
+	Page();
+	~Page();
+	Page(char* tmp,vector<Attribute> record_Descriptor);
+	int free_ptr;
+	vector<Record> records;
+	vector<Slot> slot_directory;
+	RC encodePage();
+	char* buffer;
+};
+
+struct PageDirectorySlot{
+	int page_id;
+	int free_byte;
+};
+class PageDirectory{
+public:
+	PageDirectory():next_page(-1),num_page(0){buffer = (char*)malloc(PAGE_SIZE);}
+	PageDirectory(char* tmp);
+	~PageDirectory(){}
+	RC encodePageDirectory();
+	int next_page;
+	int num_page;
+	vector<PageDirectorySlot> pds;
+	char* buffer;
 };
 
 // Comparison Operator (NOT needed for part 1 of the project)
@@ -125,13 +210,16 @@ IMPORTANT, PLEASE READ: All methods below this comment (other than the construct
       RBFM_ScanIterator &rbfm_ScanIterator);
 
 public:
-
+  	  int pagedirectory_num;
+  	  int current_pagedirectory;
 protected:
   RecordBasedFileManager();
   ~RecordBasedFileManager();
 
 private:
   static RecordBasedFileManager *_rbf_manager;
+  static PagedFileManager *_pf_manager;
 };
+
 
 #endif

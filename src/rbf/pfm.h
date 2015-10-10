@@ -9,6 +9,7 @@ typedef char byte;
 #include <string>
 #include <climits>
 #include <sys/stat.h>
+#include <iostream>
 
 using namespace std;
 
@@ -55,12 +56,24 @@ public:
     unsigned getNumberOfPages();                                        // Get the number of pages in the file
     RC collectCounterValues(unsigned &readPageCount, unsigned &writePageCount, unsigned &appendPageCount);  // Put the current counter values into variables
 
-    inline RC setFileName(const string& fileName){
-    	fileName = *fileName;
+    inline RC setFilePtr(FILE* fp){
+    	filePtr = fp;
     	return 0;
     }
+    inline FILE* getFilePtr(){
+    	return filePtr;
+    }
+    inline RC setFileName(const string& fn){
+    	fileName = fn;
+    	return 0;
+    }
+    inline string getFileName(){
+    	return fileName;
+    }
+
 private:
     string fileName;
+    FILE* filePtr;
 }; 
 
 #endif
